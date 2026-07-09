@@ -13,6 +13,8 @@ mydp = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     port=3306
 )
 
+print(mydp)
+
 nav_pages = [
     {"name": "Home", "url": "/"},
     {"name": "Mahashri", "url": "/maha"},
