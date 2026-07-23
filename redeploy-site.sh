@@ -1,11 +1,14 @@
 #!/bin/bash
+set -e
 
-cd
-cd mlh-fellowship-portfolio-site/
+PROJECT_DIR="$HOME/mlh-fellowship-portfolio-site"
+
+cd "$PROJECT_DIR"
 
 git fetch && git reset origin/main --hard
 
-source venv/bin/activate
-pip install -r requirements.txt
+docker compose -f docker-compose.prod.yml down
 
-sudo systemctl restart myportfolio
+docker compose -f docker-compose.prod.yml up -d --build
+
+echo "Redeploy complete."
